@@ -1,22 +1,6 @@
 """# Fugaku Experiments Folder
 
-## 📂 Folder Structure
-
-```
-Fugaku_experiments/
-├── Allgather/
-│   ├── all_gather_radix_batch.cpp
-│   └── main.cpp
-├── Allreduce/
-│   ├── all_reduce_radix_batch.cpp
-│   └── main.cpp
-├── Reduce-scatter/
-│   ├── reduce_scatter_radix_batch.cpp
-│   └── main.cpp
-└── README.md
-```
-
-Each `main.cpp` follows a consistent structure and benchmarking flow:
+`main.cpp` follows a consistent structure and benchmarking flow:
 1. Initializes MPI and parses runtime parameters.
 2. Iterates over different message sizes (`count = base << i`).
 3. Benchmarks radix- and batch-parameterized algorithm variants.
@@ -26,12 +10,10 @@ Each `main.cpp` follows a consistent structure and benchmarking flow:
 
 ## ⚙️ Compilation
 
-All programs can be compiled using `mpic++`:
+The program can be compiled using `mpic++`:
 
 ```bash
-mpic++ -O3 -std=c++17 -o allgather main.cpp all_gather_radix_batch.cpp
 mpic++ -O3 -std=c++17 -o allreduce main.cpp all_reduce_radix_batch.cpp
-mpic++ -O3 -std=c++17 -o reduce_scatter main.cpp reduce_scatter_radix_batch.cpp
 ```
 
 ---
@@ -84,7 +66,7 @@ The CSV contains one row per experiment configuration:
 
 ## 🧩 Implementation Notes
 
-- Each collective (AllGather, AllReduce, ReduceScatter) defines:
+- The implementation defines:
   - A *parameterized radix/batch variant* (`*_radix_batch.cpp`)
   - A *standard MPI baseline* for comparison.
 - The test harness in `main.cpp` automatically sweeps message sizes and radix values.
