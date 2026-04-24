@@ -1,5 +1,4 @@
-"""# Fugaku Experiments Folder
-
+## Content
 `main.cpp` follows a consistent structure and benchmarking flow:
 1. Initializes MPI and parses runtime parameters.
 2. Iterates over different message sizes (`count = base << i`).
@@ -56,8 +55,8 @@ The CSV contains one row per experiment configuration:
 
 | algorithm_name | k | b | nprocs | send_count | time | is_correct |
 |-----------------|---|---|--------|-------------|------|-------------|
-| reduce_scatter_radix_batch | 4 | 16 | 32 | 4096 | 1.23e-05 | 1 |
-| reduce_scatter_standard | — | — | 32 | 4096 | 2.45e-05 | 1 |
+| allreduce_radix_batch | 4 | 16 | 32 | 4096 | 1.23e-05 | 1 |
+| allreduce_standard | — | — | 32 | 4096 | 2.45e-05 | 1 |
 
 - **`time`** is the measured execution latency in seconds.  
 - **`is_correct`** indicates whether the result was validated against the MPI reference collective.
